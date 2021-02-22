@@ -4,7 +4,7 @@
   Auteur     : F. Rodrigues dos Santos
   Sujet      : ???
  */
-require __DIR__."/php/constantes.inc.php";
+require __DIR__ . "/php/constantes.inc.php";
 
 /**
  * Connecteur de la base de données du .

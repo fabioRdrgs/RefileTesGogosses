@@ -136,4 +136,3 @@ function delete($id)
   }
   return $answer;
 }
-?>

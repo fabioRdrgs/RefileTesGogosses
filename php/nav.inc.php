@@ -20,11 +20,11 @@
                         <a class="nav-link" href="index.php">Accueil<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="page/annonces.php">Annonces</a>
+                        <a class="nav-link" href="./annonces.php">Annonces</a>
                     </li>
                     <!-- Ici une boucle if pour savoir si oui ou non connecter. Si oui afficher ce qui est en dessous -->
                     <li class="nav-item">
-                        <a class="nav-link" href="page/annonce.php">Mes annonces</a>
+                        <a class="nav-link" href="./annonce.php">Mes annonces</a>
                     </li>
                 </ul>
             </div>
@@ -34,7 +34,7 @@
                 </li>
                 <!-- Ici une boucle if pour savoir si oui ou non connecter. Si oui afficher ce qui est en dessous -->
                 <li class="nav-item">
-                    <a class="nav-link" href="page/login.php"><img src="img/cart.svg"></img></a>
+                    <a class="nav-link" href="./login.php"><img src="img/cart.svg"></img></a>
                 </li>
             </ul>
         </div>
