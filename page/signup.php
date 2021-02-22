@@ -16,7 +16,7 @@ $script = basename($_SERVER['SCRIPT_NAME'], '.php');
 if ( $script != 'index' && $_SESSION['loggedIn']) {
 header('location: index.php');
 die("You are not authorized for this page!");
-}
+} 
 
 var_dump($_SESSION);
 $uName = filter_input(INPUT_POST,'username',FILTER_SANITIZE_STRING);
