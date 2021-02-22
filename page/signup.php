@@ -9,6 +9,15 @@ session_start();
 if(!isset($_SESSION['loggedIn']))
 $_SESSION['loggedIn'] = false;
 
+// Nom de la page chargée (sans l'extension)
+$script = basename($_SERVER['SCRIPT_NAME'], '.php');
+// Vérifier si elle est dans la liste des droits.
+// Toujours permettre l'accès à index
+if ( $script != 'index' && $_SESSION['loggedIn']) {
+header('location: index.php');
+die("You are not authorized for this page!");
+}
+
 var_dump($_SESSION);
 $uName = filter_input(INPUT_POST,'username',FILTER_SANITIZE_STRING);
 $uEmail = filter_input(INPUT_POST,'email',FILTER_VALIDATE_EMAIL);
