@@ -1,5 +1,5 @@
 <?php
-require __DIR__.'/php/sql.inc.php';
+require '../php/sql.inc.php';
 
 function checkIfEmailExists($email)
 {
@@ -11,17 +11,55 @@ function checkIfEmailExists($email)
   }
   $answer = false;
   try {
-    $ps->bindParam(':ID', $id, PDO::PARAM_INT);
+    $ps->bindParam(':EMAIL', $email, PDO::PARAM_STR);
 
     if ($ps->execute())
-      $answer = $ps->fetchAll(PDO::FETCH_ASSOC);
+      $answer = $ps->fetch(PDO::FETCH_ASSOC);
   } catch (PDOException $e) {
     echo $e->getMessage();
   }
 
   return $answer;
 }
+function getUserInfo($uEmail)
+{
+  static $ps = null;
+  $sql = 'SELECT * FROM `t_user` WHERE email = :EMAIL';
 
+  if ($ps == null) {
+    $ps = db()->prepare($sql);
+  }
+  $answer = false;
+  try {
+    $ps->bindParam(':EMAIL', $uEmail, PDO::PARAM_INT);
+
+    if ($ps->execute())
+      $answer = $ps->fetch(PDO::FETCH_ASSOC);
+  } catch (PDOException $e) {
+    echo $e->getMessage();
+  }
+  return $answer;
+}
+function CreateNewUser($uName,$uEmail,$uPswd)
+{
+  static $ps = null;
+  $sql = "INSERT INTO `t_user` (`nomUtilisateur`, `email`, `mdp`) ";
+  $sql .= "VALUES (:NAME, :EMAIL, :MDP)";
+  if ($ps == null) {
+    $ps = db()->prepare($sql);
+  }
+  $answer = false;
+  try {
+    $ps->bindParam(':NAME', $uName, PDO::PARAM_STR);
+    $ps->bindParam(':EMAIL', $uEmail, PDO::PARAM_STR);
+    $ps->bindParam(':MDP', $uPswd, PDO::PARAM_STR);
+  
+    $answer = $ps->execute();
+  } catch (PDOException $e) {
+    echo $e->getMessage();
+  }
+  return $answer;
+}
 
 function readById($id)
 {
