@@ -28,67 +28,70 @@
     </div>
 
     <!-- Liste de quelques articles qui s'affiche selon la recherche (en dur pour le moment)-->
-    <div class="card-group p-4">
-        <div class="card m-2">
-            <a href="page/article.php">
-                <img class="card-img-top" src="img/download.svg" alt="#">
-            </a>
-            <div class="card-body">
-                <h5 class="card-title">Titre</h5>
-                <p class="card-text">Description</p>
-                <p class="card-text"><small class="text-muted">Last updated X mins ago</small></p>
+    <div class="row justify-content-center pt-2">
+        <div class="card-group col-11">
+            <div class="card m-2">
+                <a href="page/article.php">
+                    <img class="card-img-top" src="img/download.svg" alt="#">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Titre</h5>
+                    <p class="card-text">Description</p>
+                    <p class="card-text"><small class="text-muted">Last updated X mins ago</small></p>
+                </div>
+            </div>
+            <div class="card m-2">
+                <a href="page/article.php">
+                    <img class="card-img-top" src="img/download.svg" alt="#">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Titre</h5>
+                    <p class="card-text">Description</p>
+                    <p class="card-text"><small class="text-muted">Last updated X mins ago</small></p>
+                </div>
+            </div>
+            <div class="card m-2">
+                <a href="page/article.php">
+                    <img class="card-img-top" src="img/download.svg" alt="#">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Titre</h5>
+                    <p class="card-text">Description</p>
+                    <p class="card-text"><small class="text-muted">Last updated X mins ago</small></p>
+                </div>
             </div>
         </div>
-        <div class="card m-2">
-            <a href="page/article.php">
-                <img class="card-img-top" src="img/download.svg" alt="#">
-            </a>
-            <div class="card-body">
-                <h5 class="card-title">Titre</h5>
-                <p class="card-text">Description</p>
-                <p class="card-text"><small class="text-muted">Last updated X mins ago</small></p>
+        <!-- A faire de manière dynamique -->
+        <div class="card-group col-11">
+            <div class="card m-2">
+                <a href="page/article.php">
+                    <img class="card-img-top" src="img/download.svg" alt="#">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Titre</h5>
+                    <p class="card-text">Description</p>
+                    <p class="card-text"><small class="text-muted">Last updated X mins ago</small></p>
+                </div>
             </div>
-        </div>
-        <div class="card m-2">
-            <a href="page/article.php">
-                <img class="card-img-top" src="img/download.svg" alt="#">
-            </a>
-            <div class="card-body">
-                <h5 class="card-title">Titre</h5>
-                <p class="card-text">Description</p>
-                <p class="card-text"><small class="text-muted">Last updated X mins ago</small></p>
+            <div class="card m-2">
+                <a href="page/article.php">
+                    <img class="card-img-top" src="img/download.svg" alt="#">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Titre</h5>
+                    <p class="card-text">Description</p>
+                    <p class="card-text"><small class="text-muted">Last updated X mins ago</small></p>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="card-group p-4">
-        <div class="card m-2">
-            <a href="page/article.php">
-                <img class="card-img-top" src="img/download.svg" alt="#">
-            </a>
-            <div class="card-body">
-                <h5 class="card-title">Titre</h5>
-                <p class="card-text">Description</p>
-                <p class="card-text"><small class="text-muted">Last updated X mins ago</small></p>
-            </div>
-        </div>
-        <div class="card m-2">
-            <a href="page/article.php">
-                <img class="card-img-top" src="img/download.svg" alt="#">
-            </a>
-            <div class="card-body">
-                <h5 class="card-title">Titre</h5>
-                <p class="card-text">Description</p>
-                <p class="card-text"><small class="text-muted">Last updated X mins ago</small></p>
-            </div>
-        </div>
-        <div class="card m-2">
-            <a href="page/article.php">
-                <img class="card-img-top" src="img/download.svg" alt="#">
-            </a>
-            <div class="card-body">
-                <h5 class="card-title">Titre</h5>
-                <p class="card-text">Description</p>
-                <p class="card-text"><small class="text-muted">Last updated X mins ago</small></p>
+            <div class="card m-2">
+                <a href="page/article.php">
+                    <img class="card-img-top" src="img/download.svg" alt="#">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Titre</h5>
+                    <p class="card-text">Description</p>
+                    <p class="card-text"><small class="text-muted">Last updated X mins ago</small></p>
+                </div>
             </div>
         </div>
     </div>
