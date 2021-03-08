@@ -61,7 +61,6 @@
                 </div>
             </div>
         </div>
-        <!-- A faire de manière dynamique -->
         <div class="card-group col-11">
             <div class="card m-2">
                 <a href="page/article.php">
@@ -97,4 +96,6 @@
     </div>
 </body>
 
+<!-- Pied de page -->
+<?php include_once('php/footer.inc.php'); ?>
 </html>
