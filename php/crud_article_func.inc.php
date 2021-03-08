@@ -12,7 +12,7 @@ $_SESSION['loggedIn'] = false;
 $script = basename($_SERVER['SCRIPT_NAME'], '.php');
 // Vérifier si elle est dans la liste des droits.
 // Toujours permettre l'accès à index
-if ( $script != 'index' && !$_SESSION['loggedIn']) {
+if ( $script != 'index'&& $script != 'annonce' && !$_SESSION['loggedIn']) {
 header('location: index.php');
 die("You are not authorized for this page!");
 }
