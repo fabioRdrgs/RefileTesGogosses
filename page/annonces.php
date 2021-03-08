@@ -9,7 +9,7 @@
 <body>
     <!-- Barre de nvigation -->
     <?php include_once('../php/nav.inc.php'); ?>
-    
+
 </body>
 
 <!-- Pied de page -->

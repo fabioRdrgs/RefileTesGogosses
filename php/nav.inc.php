@@ -1,7 +1,7 @@
 <?php
-include_once('../php/page_func.inc.php');
+include_once('page_func.inc.php');
 
-$lienNav = setLinks();
+$lienNav = setLinks($_SERVER['PHP_SELF']);
 ?>
 
 <!DOCTYPE html>

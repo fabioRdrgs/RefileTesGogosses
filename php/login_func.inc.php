@@ -1,5 +1,5 @@
 <?php
-require __DIR__.'/php/sql.inc.php';
+require __DIR__ . '/php/sql.inc.php';
 
 function checkIfEmailExists($email)
 {
@@ -101,7 +101,7 @@ function update($content1, $content2, $content3, $content4, $content5)
   }
   $answer = false;
   try {
-     $ps->bindParam(':CONTENT1', $content1, PDO::PARAM_STR);
+    $ps->bindParam(':CONTENT1', $content1, PDO::PARAM_STR);
     $ps->bindParam(':CONTENT2', $content2, PDO::PARAM_STR);
     $ps->bindParam(':CONTENT3', $content3, PDO::PARAM_STR);
     $ps->bindParam(':CONTENT4', $content4, PDO::PARAM_STR);
