@@ -1,3 +1,9 @@
+<?php
+include_once('../php/page_func.inc.php');
+
+$lienNav = setLinks();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -9,7 +15,7 @@
 
 <body style="font-family: Arial, Helvetica, sans-serif;">
     <nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #EEEEEF;">
-        <a class="navbar-brand" href="#">Refile tes Gogosses</a>
+        <a class="navbar-brand" href="<?= $lienNav[0] ?>">Refile tes Gogosses</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -17,24 +23,24 @@
             <div class="navbar-collapse collapse justify-content-center">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php">Accueil<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="<?= $lienNav[0] ?>">Accueil<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./annonces.php">Annonces</a>
+                        <a class="nav-link" href="<?= $lienNav[1] ?>">Annonces</a>
                     </li>
                     <!-- Ici une boucle if pour savoir si oui ou non connecter. Si oui afficher ce qui est en dessous -->
                     <li class="nav-item">
-                        <a class="nav-link" href="./annonce.php">Mes annonces</a>
+                        <a class="nav-link" href="<?= $lienNav[2] ?>">Mes annonces</a>
                     </li>
                 </ul>
             </div>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Se connecter</a>
+                    <a class="nav-link" href="<?= $lienNav[3] ?>">Se connecter</a>
                 </li>
                 <!-- Ici une boucle if pour savoir si oui ou non connecter. Si oui afficher ce qui est en dessous -->
                 <li class="nav-item">
-                    <a class="nav-link" href="./login.php"><img src="img/cart.svg"></img></a>
+                    <a class="nav-link" href="<?= $lienNav[4] ?>"><img src="<?= $lienNav[5] ?>"></img></a>
                 </li>
             </ul>
         </div>
