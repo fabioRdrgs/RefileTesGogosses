@@ -150,7 +150,7 @@ function CreateNewArticle($titreArticle, $quantiteArticle, $descriptionArticle, 
         $req->execute();
 
         $idArticle = db()->lastInsertId();
-    
+     
         static $req2 = null;
         if($req2 == null)
         $req2 = db()->prepare($sqlAddImage);

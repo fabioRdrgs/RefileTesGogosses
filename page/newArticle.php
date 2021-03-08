@@ -28,7 +28,7 @@ require '../php/crud_article_func.inc.php';
         <label for="dArt">Description</label>
         <textarea name="descArticle" id="dArt">
             Des Bananes!
-        </textarea>
+        </textarea> 
         <label for="fileSelect"> Sélectionnez 1 à 4 images de l'article :</label> 
         <input id="fileSelect" accept=".jpg, .jpeg, .png" type="file" name="imgSelect[]" multiple>
         <input type="submit" name="submit" id="submit"/>
