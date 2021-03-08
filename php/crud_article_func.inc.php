@@ -172,3 +172,8 @@ function CreateNewArticle($titreArticle, $quantiteArticle, $descriptionArticle, 
         }
 }
 
+function UpdateArticle($titreArticle, $quantiteArticle, $descriptionArticle, $prixArticle, $arrayImages, $idUser)
+{
+    
+}
+
