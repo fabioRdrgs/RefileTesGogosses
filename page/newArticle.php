@@ -19,6 +19,7 @@ require '../php/crud_article_func.inc.php';
         
 if (isset($_POST['submit']))
 {
+    $imgArray = Array();
     var_dump($_FILES["imgSelect"]);
     for ($i = 0; $i < count($_FILES['imgSelect']['name']); $i++) 
     {
@@ -36,7 +37,7 @@ if (isset($_POST['submit']))
         else 
         {
             var_dump($ext);
-            if (in_array($ext, ["png", "bmp", "jpg", "jpeg", "gif"])) 
+            if (in_array($ext, ["png", "bmp", "jpg", "jpeg"])) 
             {
                 if($titreArticle == "" || $quantiteArticle == "" || $descriptionArticle == "" || $prixArticle == "")
                 {
@@ -45,8 +46,8 @@ if (isset($_POST['submit']))
                 }
                 else
                 {
-                   if(array_push($imgArray,[$filename,$ext]) <= 0)
-                    echo "Erreur";
+                   array_push($imgArray,[$filename,$ext]);
+               
                 }               
             } 
             else 
@@ -57,16 +58,19 @@ if (isset($_POST['submit']))
         }
     }
 
+    
     if(!empty($imgArray))
     {
         $resultArticleCreation = CreateNewArticle($titreArticle,$quantiteArticle,$descriptionArticle,$prixArticle,$imgArray,$_SESSION['user']['id']);   
-        var_dump($resultArticleCreation);
-
+      
+        var_dump($_FILES["imgSelect"]["tmp_name"]);
         if($resultArticleCreation != false)
         {
-            for($i = 0; $i < count($_FILES['imgSelect']['name']);$i++)
+            var_dump($imgArray);
+$i = 0;
+            foreach($imgArray as $img)
             {
-                if(move_uploaded_file($_FILES["imgSelect"]["tmp_name"][$i],$dir.$file))
+                if(move_uploaded_file($_FILES["imgSelect"]["tmp_name"][$i],$dir.$img[0].".".$img[1]))
                 {
                     echo "Upload was successful";
                     unset($resultArticleCreation);
@@ -77,12 +81,13 @@ if (isset($_POST['submit']))
                     unset($imgArray);
                     unset($_POST);
                 }
-
                 else
                 {
                     echo "Erreur lors de l'upload des fichiers";
                 }    
-            }                           
+                $i++;
+            }
+                              
         }
         else
         {
@@ -102,11 +107,9 @@ if (isset($_POST['submit']))
         <label for="pArt">Prix</label>
         <input type="number" name="prixArticle" id="pArt" value="15.50"/>
         <label for="dArt">Description</label>
-        <textarea name="descArticle" id="dArt">
-            Des Bananes!
-        </textarea> 
+        <textarea name="descArticle" id="dArt">Des Bananes!</textarea> 
         <label for="fileSelect"> Sélectionnez 1 à 4 images de l'article :</label> 
-        <input id="fileSelect" accept=".jpg, .jpeg, .png" type="file" name="imgSelect[]" multiple>
+        <input id="fileSelect" accept=".jpg, .jpeg, .png, bmp" type="file" name="imgSelect[]" multiple>
         <input type="submit" name="submit" id="submit"/>
         </form>
     </body>
