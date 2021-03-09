@@ -21,7 +21,6 @@ $titreArticle = filter_input(INPUT_POST, "titreArticle", FILTER_SANITIZE_STRING)
 $quantiteArticle = filter_input(INPUT_POST, "quantiteArticle", FILTER_SANITIZE_NUMBER_INT);
 $descriptionArticle = filter_input(INPUT_POST, "descArticle", FILTER_SANITIZE_STRING);
 $prixArticle = filter_input(INPUT_POST,'prixArticle',FILTER_SANITIZE_STRING);
-static $imgArray = Array();
 
 if (isset($_POST['submit']))
 {
@@ -105,12 +104,12 @@ if (isset($_POST['submit']))
 function ReadArticleById($idArticle)
 {
     static $ps = null;
-    $sql = @"SELECT nom as 'nomArticle'
+    $sql = @"SELECT t_annonce.id as 'idArticle', nom as 'nomArticle'
      , prix as 'prixArticle',
       quantite as 'quantiteArticle', 
       description as 'descriptionArticle', 
       nomImage as 'nomImageArticle', typeImage as 
-      'typeImageArticle', nomUtilisateur as 'nomUser'
+      'typeImageArticle', idUser as 'idUser'
       FROM t_annonce JOIN t_image on (`idAnnonce` = t_annonce.id) JOIN t_user on (t_user.id = t_annonce.idUser) where t_annonce.id = :IDARTICLE";
   
     if ($ps == null) {
@@ -121,7 +120,7 @@ function ReadArticleById($idArticle)
       $ps->bindParam(':IDARTICLE', $idArticle, PDO::PARAM_INT);
   
       if ($ps->execute())
-        $answer = $ps->fetch(PDO::FETCH_ASSOC);
+        $answer = $ps->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
       echo $e->getMessage();
     }
@@ -172,3 +171,63 @@ function CreateNewArticle($titreArticle, $quantiteArticle, $descriptionArticle, 
         }
 }
 
+<<<<<<< Updated upstream
+=======
+function UpdateArticle($titreArticle, $quantiteArticle, $descriptionArticle, $prixArticle, $arrayImages,$idArticle)
+{
+    static $psUpdateAnnonce = null;
+  static $psAddImageAnnonce = null;
+  static $psDeleteImage = null;
+    $sql = "UPDATE `t_annonce` SET ";
+    $sql .= "`nom` = :NOM, ";
+    $sql .= "`quantite` = :QUANTITE, ";
+    $sql .= "`description` = :DESCRIPTION, ";
+    $sql .= "`prix` = :PRIX ";
+    $sql .= "WHERE (`id` = :ID)";
+    $sqlDeleteImage = "DELETE * FROM t_image WHERE idAnnonce = :IDANNONCE";
+    $sqlAddImage = "INSERT INTO `table` (`nomImage`, `typeImage`, `idAnnonce`) VALUES (:NOMIMAGE, :TYPEIMAGE, :IDANNONCE)";
+
+    if ($psUpdateAnnonce == null) {
+      $psUpdateAnnonce = db()->prepare($sql);
+    }
+    if ($psAddImageAnnonce == null) {
+        $psAddImageAnnonce = db()->prepare($sqlAddImage);
+      }
+      if($psDeleteImage == null)
+      {
+        $psDeleteImage = db()->prepare($sqlDeleteImage);
+      }
+
+try{
+        db()->beginTransaction();
+        $psUpdateAnnonce->bindParam(':NOM', $titreArticle, PDO::PARAM_STR);
+        $psUpdateAnnonce->bindParam(':QUANTITE', $quantiteArticle, PDO::PARAM_INT);
+        $psUpdateAnnonce->bindParam(':DESCRIPTION', $descriptionArticle, PDO::PARAM_STR);
+        $psUpdateAnnonce->bindParam(':PRIX', $prixArticle, PDO::PARAM_INT);
+        $psUpdateAnnonce->bindParam(':ID', $idArticle, PDO::PARAM_INT);
+        $psUpdateAnnonce->execute();
+
+        $psDeleteImage->bindParam(':IDANNONCE',$idArticle,PDO::PARAM_INT);
+        $psDeleteImage->execute();
+
+    
+
+        foreach($arrayImages as $img)
+        {   
+            $psAddImageAnnonce->bindParam(':NOMIMAGE',$img[0],PDO::PARAM_STR);
+            $psAddImageAnnonce->bindParam(':TYPEIMAGE',$img[1],PDO::PARAM_STR);
+            $psAddImageAnnonce->bindParam(':IDANNONCE',$idArticle,PDO::PARAM_INT);
+            $psAddImageAnnonce->execute();
+        }
+
+        db()->commit();
+
+        return true;
+    }
+     catch (PDOException $e) {
+      db()->rollBack();
+    return $e;
+
+}
+}
+>>>>>>> Stashed changes
