@@ -29,7 +29,7 @@ else
 {
     $infoArticle = ReadArticleById($_GET['idA']);
     var_dump($_SESSION);
-var_dump($_FILES);
+var_dump($infoArticle);
     if(isset($_POST['cancelUpdate']))
     {
         unset($_POST['modifyA']);
