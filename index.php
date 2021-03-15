@@ -1,3 +1,14 @@
+<?php
+
+if(!isset($_SESSION))
+{
+session_start();
+}
+if(!isset($_SESSION['loggedIn']))
+$_SESSION['loggedIn'] = false;
+
+var_dump($_SESSION);
+?>
 <!DOCTYPE html>
 <html>
 

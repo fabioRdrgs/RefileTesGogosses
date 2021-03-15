@@ -7,7 +7,6 @@ session_start();
 if(!isset($_SESSION['loggedIn']))
 $_SESSION['loggedIn'] = false;
 
-var_dump($_SESSION);
 
 // Nom de la page chargée (sans l'extension)
 $script = basename($_SERVER['SCRIPT_NAME'], '.php');
@@ -27,7 +26,7 @@ if(isset($_POST['submit']))
     if(checkIfEmailExists($uEmail))
     {
         $userInfo = getUserInfo($uEmail);
-
+var_dump($userInfo);
         if(password_verify($uPswd,$userInfo['mdp']))
         {
             $_SESSION['loggedIn'] = true;
@@ -36,7 +35,7 @@ if(isset($_POST['submit']))
             $_SESSION['user']['email'] = $userInfo['email'];
             unset($userInfo);
             unset($uPswd);
-            header('location: index.php');
+            header('location: ../index.php');
         }else
         echo "Mot de Passe invalide!";
         
@@ -57,19 +56,19 @@ if(isset($_POST['submit']))
 
 <body class="text-center p-5">
 <div class="container-fluid p-5">
-    <form class="form-signin p-5">
+    <form class="form-signin p-5" action="login.php" method="POST">
       <img class="mb-4" src="../img/icon.png" alt="Icone" width="75" height="75">
       <h1 class="h3 mb-3 font-weight-normal">Connectez-vous</h1>
       <label for="inputEmail" class="sr-only">Email</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+      <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
       <label for="inputPassword" class="sr-only">Mot de passe</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+      <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
       <div class="checkbox mb-3">
         <label>
           <input type="checkbox" value="remember-me"> Remember me
         </label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <input name="submit" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       <a href="signup.php"><p class="mt-2">Pas de compte? Inscrivez-vous</p></a>
       <p class="mt-3 mb-3 text-muted">&copy; 2017-2018</p>
     </form>
