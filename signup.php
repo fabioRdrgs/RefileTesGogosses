@@ -1,8 +1,5 @@
 <?php 
-<<<<<<< HEAD
-require_once 'php/login_func.inc.php';
-
->>>>>>> 4e911112ee0062e9938a8a02cbed89798c1b2d9d
+require_once './php/login_func.inc.php';
 if(!isset($_SESSION))
 {
 session_start();
@@ -65,11 +62,7 @@ if(isset($_POST['submit']))
 
 <body>
     <!-- Barre de nvigation -->
-<<<<<<< HEAD
-    <?php include_once('php/nav.inc.php'); ?>
-=======
     <?php include_once('./php/nav.inc.php'); ?>
->>>>>>> 4e911112ee0062e9938a8a02cbed89798c1b2d9d
 
     <div class="container-fluid">
         <form method="POST" action="signup.php" class="row row-cols-lg-auto g-2 justify-content-center">
@@ -96,11 +89,7 @@ if(isset($_POST['submit']))
 </body>
 
 <!-- Pied de page -->
-<<<<<<< HEAD
-<?php include_once('php/footer.inc.php'); ?>
-=======
 <?php include_once('./php/footer.inc.php'); ?>
->>>>>>> 4e911112ee0062e9938a8a02cbed89798c1b2d9d
 
 </html>
 <script src="./js/main.js"></script>
