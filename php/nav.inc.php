@@ -1,4 +1,11 @@
 <?php
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (!isset($_SESSION['loggedIn']))
+    $_SESSION['loggedIn'] = false;
+
 include_once('page_func.inc.php');
 
 $lienNav = setLinks($_SERVER['PHP_SELF']);
@@ -29,20 +36,22 @@ $lienNav = setLinks($_SERVER['PHP_SELF']);
                     <li class="nav-item">
                         <a class="nav-link" href="<?= $lienNav[1] ?>">Annonces</a>
                     </li>
-                    <!-- Ici une boucle if pour savoir si oui ou non connecter. Si oui afficher ce qui est en dessous -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= $lienNav[2] ?>">Mes annonces</a>
-                    </li>
+                    <?php
+                    if ($_SESSION["loggedIn"] == true) {
+                        echo "<li class=\"nav-item\"> <a class=\"nav-link\" href=\"" . $lienNav[2] . "\">Mes annonces</a> </li>";
+                    }
+                    ?>
                 </ul>
             </div>
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="<?= $lienNav[3] ?>">Se connecter</a>
                 </li>
-                <!-- Ici une boucle if pour savoir si oui ou non connecter. Si oui afficher ce qui est en dessous -->
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= $lienNav[3] ?>"><img src="<?= $lienNav[5] ?>"></img></a>
-                </li>
+                <?php
+                if ($_SESSION["loggedIn"] != true) {
+                    echo "<li class=\"nav-item\"> <a class=\"nav-link\" href=\"" . $lienNav[3] . "\"><img src=\"" . $lienNav[5] . "\"></img></a> </li>";
+                }
+                ?>
             </ul>
         </div>
     </nav>
