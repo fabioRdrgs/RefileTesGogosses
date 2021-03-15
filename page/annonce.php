@@ -29,7 +29,7 @@ else
 {
     $infoArticle = ReadArticleById($_GET['idA']);
     var_dump($_SESSION);
-var_dump($_FILES);
+var_dump($infoArticle);
     if(isset($_POST['cancelUpdate']))
     {
         unset($_POST['modifyA']);
@@ -152,3 +152,21 @@ var_dump($_FILES);
     }
 
 }
+?>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil</title>
+</head>
+
+<body>
+    <!-- Barre de nvigation -->
+    <?php include_once('../php/nav.inc.php'); ?>
+
+</body>
+
+<!-- Pied de page -->
+<?php include_once('../php/footer.inc.php'); ?>
+</html>
