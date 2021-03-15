@@ -43,6 +43,7 @@ var_dump($_FILES);
                 var_dump($_FILES['imgSelect']);
                 if($_FILES['imgSelect']['error'][0] == 0)
                 {
+                    echo"AA";
                     foreach($infoArticle as $img)              
                     for ($i = 0; $i < count($_FILES['imgSelect']['name']); $i++) 
                     {
@@ -86,11 +87,14 @@ var_dump($_FILES);
                     {
                         array_push($imgArray,[$img['nomImageArticle'],$img['typeImageArticle']]);
                     }
-                }         
+                }     
+
                 if(UpdateArticle($titreArticle,$quantiteArticle,$descriptionArticle,$prixArticle,$imgArray,$_GET['idA']))
                 {
+                    var_dump($imgArray);
                     if($_FILES['imgSelect']['error'][0] == 0)
                     {
+                       
                         foreach($imgArray as $img)
                         {
                             if(move_uploaded_file($_FILES["imgSelect"]["tmp_name"][$i],$dir.$img[0].".".$img[1]))
@@ -138,7 +142,6 @@ var_dump($_FILES);
     }
     else
     {
-         var_dump($infoArticle);
         echo "<form method=\"POST\" action=\"annonce.php?idA=".$_GET['idA']."\" />";
        foreach($infoArticle as $img)
        {
