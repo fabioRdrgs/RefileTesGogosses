@@ -62,7 +62,7 @@ if (isset($search)) {
         <div class=\"card-body\">
             <h5 class=\"card-title\">" . $articles[$i]['nom'] . "</h5>
             <p class=\"card-text\">" . $articles[$i]['description'] . "</p>
-            <p class=\"card-text\"><small class=\"text-muted\">Last updated X mins ago</small></p>
+            <p class=\"card-text\"><small class=\"text-muted\">Annonce créée le ".$articles[$i]['dateCreation']."</small></p>
         </div>
     </div>";
         }
