@@ -1,5 +1,5 @@
 <?php 
-require '../php/crud_article_func.inc.php';
+require './php/crud_article_func.inc.php';
 if(!isset($_SESSION))
 {
 session_start();
@@ -30,7 +30,7 @@ if (isset($_POST['submit']))
         $Orgfilename = $_FILES["imgSelect"]["name"][$i];
         $filename = uniqid();
         $ext = explode("/", $_FILES["imgSelect"]["type"][$i])[1];
-        $dir = "../tmp/";
+        $dir = "./tmp/";
         $file = $filename.'.'.$ext;
      
         var_dump($file);

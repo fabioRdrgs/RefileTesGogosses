@@ -1,5 +1,5 @@
 <?php
-require '../php/sql.inc.php';
+require './php/sql.inc.php';
 
 function checkIfEmailExists($email)
 {

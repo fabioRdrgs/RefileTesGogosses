@@ -1,6 +1,6 @@
 <?php
-require '../php/crud_article_func.inc.php';
-include_once('../php/nav.inc.php');
+require './php/crud_article_func.inc.php';
+include_once('./php/nav.inc.php');
 
 if (!isset($_SESSION)) {
     session_start();
@@ -42,7 +42,7 @@ if (!isset($_GET['idA'])) {
                         $Orgfilename = $_FILES["imgSelect"]["name"][$i];
                         $filename = uniqid();
                         $ext = explode("/", $_FILES["imgSelect"]["type"][$i])[1];
-                        $dir = "../tmp/";
+                        $dir = "./tmp/";
                         $file = $filename . '.' . $ext;
                         if (count($_FILES['imgSelect']['name']) > 4) {
                             echo "<div id=\"errorDiv\" class=\"alert alert-danger\" role=\"alert\">Attention vous avez sélectionné trop de fichiers!</div>";
@@ -114,7 +114,7 @@ if (!isset($_GET['idA'])) {
     } else {
         echo "<form method=\"POST\" action=\"annonce.php?idA=" . $_GET['idA'] . "\" />";
         foreach ($infoArticle as $img) {
-            echo   "<img style=\"width:300px;height:300px;\" src=\"../tmp/" . $img['nomImageArticle'] . '.' . $img['typeImageArticle'] . "\" >";
+            echo   "<img style=\"width:300px;height:300px;\" src=\"/" . $img['nomImageArticle'] . '.' . $img['typeImageArticle'] . "\" >";
         }
 
         echo " <input type=\"submit\" name=\"modifyA\" value=\"Modifier l'article\" id=\"submit\"/>";

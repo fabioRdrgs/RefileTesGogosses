@@ -1,5 +1,5 @@
 <?php
-require '../php/sql.inc.php';
+require './php/sql.inc.php';
 //SQL
 //************************************************************* */
 
@@ -29,7 +29,28 @@ function ReadArticleById($idArticle)
   
     return $answer;
 }
+function recherche($search)
+{
+  static $ps = null;
+$search = "%".$search."%";
+  $sql = "SELECT * FROM t_annonce WHERE nom LIKE :search LIMIT 6";
 
+  if ($ps == null) {
+    $ps = db()->prepare($sql);
+  }
+$answer=false;
+  try {
+    $ps->bindParam(':search',$search , PDO::PARAM_STR);
+   
+
+  if($answer = $ps->execute())
+  $answer = $ps->fetchAll(PDO::FETCH_ASSOC);
+
+  } catch (PDOException $e) {
+    echo $e->getMessage();
+  }
+return $answer;
+}
 function CreateNewArticle($titreArticle, $quantiteArticle, $descriptionArticle, $prixArticle, $arrayImages, $idUser)
 {
 

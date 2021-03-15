@@ -1,5 +1,5 @@
 <?php
-require_once '../php/login_func.inc.php';
+require_once './php/login_func.inc.php';
 if(!isset($_SESSION))
 {
 session_start();
@@ -35,7 +35,7 @@ var_dump($userInfo);
             $_SESSION['user']['email'] = $userInfo['email'];
             unset($userInfo);
             unset($uPswd);
-            header('location: ../index.php');
+            header('location: ./index.php');
         }else
         echo "Mot de Passe invalide!";
         
@@ -57,7 +57,7 @@ var_dump($userInfo);
 <body class="text-center p-5">
 <div class="container-fluid p-5">
     <form class="form-signin p-5" action="login.php" method="POST">
-      <img class="mb-4" src="../img/icon.png" alt="Icone" width="75" height="75">
+      <img class="mb-4" src="./img/icon.png" alt="Icone" width="75" height="75">
       <h1 class="h3 mb-3 font-weight-normal">Connectez-vous</h1>
       <label for="inputEmail" class="sr-only">Email</label>
       <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
