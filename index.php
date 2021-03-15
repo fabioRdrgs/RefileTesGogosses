@@ -18,9 +18,9 @@
     </div>
     
     <!-- Barre de recherche (recherche simple) -->
-    <div class="card p-5 ml-2 text-cemter"">
+    <div class="card p-5 ml-2 text-center"">
         <div class="input-group">
-            <input type="text" class="form-control placeholder="Que recherchez-vous ?">
+            <input type="text" class="form-control" placeholder="Que recherchez-vous ?">
             <div class="input-group-append">
                 <button class="btn border border-secondary" name="RechercheSimple" type="button"><img src="img/search.svg"></img></button>
             </div>
