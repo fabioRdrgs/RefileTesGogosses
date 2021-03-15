@@ -33,7 +33,7 @@ function recherche($search)
 {
   static $ps = null;
 $search = "%".$search."%";
-  $sql = "SELECT * FROM t_annonce WHERE nom LIKE :search LIMIT 6";
+  $sql = "SELECT * FROM t_annonce JOIN t_image on (`idAnnonce` = t_annonce.id) WHERE nom LIKE :search LIMIT 6";
 
   if ($ps == null) {
     $ps = db()->prepare($sql);
