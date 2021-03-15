@@ -29,6 +29,55 @@ function ReadArticleById($idArticle)
   
     return $answer;
 }
+function ReadArticles()
+{
+  static $ps = null;
+    $sql = @"SELECT t_annonce.id as 'idArticle', nom as 'nomArticle'
+     , prix as 'prixArticle',
+      quantite as 'quantiteArticle', 
+      description as 'descriptionArticle', 
+      nomImage as 'nomImageArticle', typeImage as 
+      'typeImageArticle', idUser as 'idUser'
+      FROM t_annonce JOIN t_image on (`idAnnonce` = t_annonce.id) JOIN t_user on (t_user.id = t_annonce.idUser)";
+  
+    if ($ps == null) {
+      $ps = db()->prepare($sql);
+    }
+    $answer = false;
+    try {
+     
+  
+      if ($ps->execute())
+        $answer = $ps->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+      echo $e->getMessage();
+    }
+  
+    return $answer;
+}
+
+function recherche($search)
+{
+  static $ps = null;
+$search = "%".$search."%";
+  $sql = "SELECT * FROM t_annonce WHERE nom LIKE :search LIMIT 6";
+
+  if ($ps == null) {
+    $ps = db()->prepare($sql);
+  }
+$answer=false;
+  try {
+    $ps->bindParam(':search',$search , PDO::PARAM_STR);
+   
+
+  if($answer = $ps->execute())
+  $answer = $ps->fetchAll(PDO::FETCH_ASSOC);
+
+  } catch (PDOException $e) {
+    echo $e->getMessage();
+  }
+return $answer;
+}
 
 function CreateNewArticle($titreArticle, $quantiteArticle, $descriptionArticle, $prixArticle, $arrayImages, $idUser)
 {
