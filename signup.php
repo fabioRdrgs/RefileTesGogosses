@@ -1,5 +1,8 @@
 <?php 
-require_once './php/login_func.inc.php';
+
+require_once 'php/login_func.inc.php';
+
+
 if(!isset($_SESSION))
 {
 session_start();
