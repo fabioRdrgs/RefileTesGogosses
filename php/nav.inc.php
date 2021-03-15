@@ -44,11 +44,16 @@ $lienNav = setLinks($_SERVER['PHP_SELF']);
                 </ul>
             </div>
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= $lienNav[3] ?>">Se connecter</a>
-                </li>
                 <?php
                 if ($_SESSION["loggedIn"] != true) {
+                    echo "<li class=\"nav-item\"> <a class=\"nav-link\" href=\"" . $lienNav[3] . "\">Se connecter</a> </li>";
+                }
+                ?>
+                <?php
+                if ($_SESSION["loggedIn"] != true) {
+                    echo "<li class=\"nav-item\"> <a class=\"nav-link\" href=\"" . $lienNav[3] . "\"><img src=\"" . $lienNav[5] . "\"></img></a> </li>";
+                }else{
+                    // Rediriger sur la page du panier
                     echo "<li class=\"nav-item\"> <a class=\"nav-link\" href=\"" . $lienNav[3] . "\"><img src=\"" . $lienNav[5] . "\"></img></a> </li>";
                 }
                 ?>
