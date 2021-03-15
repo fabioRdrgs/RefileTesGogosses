@@ -12,15 +12,15 @@
 
     <!-- Logo + Phrase d'accroche/catchy -->
     <div class="container-fluid" style="text-align: center;">
-        Logo
+    <img src="<?= $lienNav[4] ?>" alt="Icone" width="50" height="50">
         <br />
-        Phrases d'accroche/catchy
+        Phrases d'accroche / catchy
     </div>
-
+    
     <!-- Barre de recherche (recherche simple) -->
-    <div class="card p-5" style="text-align: center;">
+    <div class="card p-5 ml-2 text-cemter"">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Que recherchez-vous ?">
+            <input type="text" class="form-control placeholder="Que recherchez-vous ?">
             <div class="input-group-append">
                 <button class="btn border border-secondary" name="RechercheSimple" type="button"><img src="img/search.svg"></img></button>
             </div>

@@ -15,6 +15,7 @@ $lienNav = setLinks($_SERVER['PHP_SELF']);
 
 <body style="font-family: Arial, Helvetica, sans-serif;">
     <nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #EEEEEF;">
+        <img src="<?= $lienNav[4] ?>" alt="Icone" width="50" height="50">
         <a class="navbar-brand" href="<?= $lienNav[0] ?>">Refile tes Gogosses</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -40,7 +41,7 @@ $lienNav = setLinks($_SERVER['PHP_SELF']);
                 </li>
                 <!-- Ici une boucle if pour savoir si oui ou non connecter. Si oui afficher ce qui est en dessous -->
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= $lienNav[4] ?>"><img src="<?= $lienNav[5] ?>"></img></a>
+                    <a class="nav-link" href="<?= $lienNav[3] ?>"><img src="<?= $lienNav[5] ?>"></img></a>
                 </li>
             </ul>
         </div>

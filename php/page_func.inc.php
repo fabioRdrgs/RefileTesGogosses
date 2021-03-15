@@ -2,9 +2,9 @@
 function setLinks($path)
 {
     if (strpos($path, 'index.php')!== false) {
-        $arrayPath = ["index.php", "page/annonces.php", "page/annonce.php", "page/signup.php", "page/login.php", "./img/cart.svg", "page/login.php"];
+        $arrayPath = ["index.php", "page/annonces.php", "page/annonce.php", "page/login.php", "./img/icon.png", "./img/cart.svg", "page/signup.php"];
     } else {
-        $arrayPath = ["../index.php", "annonces.php", "annonce.php", "signup.php", "login.php", "../img/cart.svg", "login.php"];
+        $arrayPath = ["../index.php", "annonces.php", "annonce.php", "login.php", "../img/icon.png", "../img/cart.svg", "signup.php"];
     }
     return $arrayPath;
 }

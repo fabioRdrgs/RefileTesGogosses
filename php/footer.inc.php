@@ -25,7 +25,7 @@ $lienNav = setLinks($_SERVER['PHP_SELF']);
         </section>
     </div>
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        © 2021 Copyright:
+        © 2020-2021 Copyright:
         <a class="text-white" href="<?= $lienNav[0] ?>">RefileTesGogossses.ch</a>
     </div>
 </footer>
