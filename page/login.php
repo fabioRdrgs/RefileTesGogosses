@@ -68,7 +68,7 @@ var_dump($userInfo);
           <input type="checkbox" value="remember-me"> Remember me
         </label>
       </div>
-      <input name="submit" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <input name="submit" class="btn btn-lg btn-primary btn-block" type="submit">
       <a href="signup.php"><p class="mt-2">Pas de compte? Inscrivez-vous</p></a>
       <p class="mt-3 mb-3 text-muted">&copy; 2017-2018</p>
     </form>
