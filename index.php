@@ -8,12 +8,10 @@ if (!isset($_SESSION)) {
 if (!isset($_SESSION['loggedIn']))
     $_SESSION['loggedIn'] = false;
 
-var_dump($_SESSION);
 $search = filter_input(INPUT_POST, 'search', FILTER_SANITIZE_STRING);
 if (isset($search)) {
     $articles = recherche($search);
 }
-var_dump($articles);
 ?>
 <!DOCTYPE html>
 <html>
@@ -59,7 +57,7 @@ var_dump($articles);
             echo "
     <div class=\"card m-2\">
         <a href=\"page/article.php?idA=" . $articles[$i]['id'] . "\">
-            <img class=\"card-img-top\" src=\"img/download.svg\" alt=\"#\">
+            <img class=\"card-img-top\" src=\"tmp/". $articles[$i]['nomImage'].".". $articles[$i]['typeImage']."\" alt=\"#\">
         </a>
         <div class=\"card-body\">
             <h5 class=\"card-title\">" . $articles[$i]['nom'] . "</h5>
