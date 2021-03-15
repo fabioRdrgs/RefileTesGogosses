@@ -8,10 +8,10 @@
 
 <body>
     <!-- Barre de nvigation -->
-    <?php include_once('../php/nav.inc.php'); ?>
+    <?php include_once('php/nav.inc.php'); ?>
 
 </body>
 
 <!-- Pied de page -->
-<?php include_once('../php/footer.inc.php'); ?>
+<?php include_once('php/footer.inc.php'); ?>
 </html>

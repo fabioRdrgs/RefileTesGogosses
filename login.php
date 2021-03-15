@@ -60,15 +60,10 @@ var_dump($userInfo);
       <img class="mb-4" src="./img/icon.png" alt="Icone" width="75" height="75">
       <h1 class="h3 mb-3 font-weight-normal">Connectez-vous</h1>
       <label for="inputEmail" class="sr-only">Email</label>
-      <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+      <input type="email" name="email" id="inputEmail" class="form-control mb-1" placeholder="Email" required autofocus>
       <label for="inputPassword" class="sr-only">Mot de passe</label>
       <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-      </div>
-      <input name="submit" class="btn btn-lg btn-primary btn-block" type="submit">
+      <input name="submit" value="Se connecter" class="btn btn-lg btn-primary btn-block mt-3" type="submit">
       <a href="signup.php"><p class="mt-2">Pas de compte? Inscrivez-vous</p></a>
       <p class="mt-3 mb-3 text-muted">&copy; 2017-2018</p>
     </form>

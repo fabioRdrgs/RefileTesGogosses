@@ -1,5 +1,5 @@
 <?php 
-require_once '../php/login_func.inc.php';
+require_once 'php/login_func.inc.php';
 if(!isset($_SESSION))
 {
 session_start();
@@ -62,7 +62,7 @@ if(isset($_POST['submit']))
 
 <body>
     <!-- Barre de nvigation -->
-    <?php include_once('../php/nav.inc.php'); ?>
+    <?php include_once('php/nav.inc.php'); ?>
 
     <div class="container-fluid">
         <form method="POST" action="signup.php" class="row row-cols-lg-auto g-2 justify-content-center">
@@ -89,7 +89,7 @@ if(isset($_POST['submit']))
 </body>
 
 <!-- Pied de page -->
-<?php include_once('../php/footer.inc.php'); ?>
+<?php include_once('php/footer.inc.php'); ?>
 
 </html>
 <script src="../js/main.js"></script>

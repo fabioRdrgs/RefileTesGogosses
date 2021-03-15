@@ -2,17 +2,15 @@
 
 require_once './php/crud_article_func.inc.php';
 $articles = [];
-if(!isset($_SESSION))
-{
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
 }
-if(!isset($_SESSION['loggedIn']))
-$_SESSION['loggedIn'] = false;
+if (!isset($_SESSION['loggedIn']))
+    $_SESSION['loggedIn'] = false;
 
 var_dump($_SESSION);
-$search = filter_input(INPUT_POST,'search',FILTER_SANITIZE_STRING);
-if(isset($search))
-{
+$search = filter_input(INPUT_POST, 'search', FILTER_SANITIZE_STRING);
+if (isset($search)) {
     $articles = recherche($search);
 }
 var_dump($articles);
@@ -31,54 +29,53 @@ var_dump($articles);
 
     <!-- Logo + Phrase d'accroche/catchy -->
     <div class="container-fluid" style="text-align: center;">
-    <img src="<?= $lienNav[4] ?>" alt="Icone" width="50" height="50">
+        <img src="<?= $lienNav[4] ?>" alt="Icone" width="50" height="50">
         <br />
         Phrases d'accroche / catchy
     </div>
     <form action="index.php" method="POST">
-    <!-- Barre de recherche (recherche simple) -->
-    <div class="card p-5 ml-2 text-center">
-        <div class="input-group">
-       
-            <input type="text" name="search" class="form-control" placeholder="Que recherchez-vous ?">
-            <div class="input-group-append">
-                <input class="btn border border-secondary" name="RechercheSimple"  src="img/search.svg" type="image"><img></img></button>
+        <!-- Barre de recherche (recherche simple) -->
+        <div class="card p-5 ml-2 text-center">
+            <div class="input-group">
+
+                <input type="text" name="search" class="form-control" placeholder="Que recherchez-vous ?">
+                <div class="input-group-append">
+                    <input class="btn border border-secondary" name="RechercheSimple" src="img/search.svg" type="image"><img></img></button>
+                </div>
             </div>
         </div>
-    </div>
     </form>
 
     <!-- Liste de quelques articles qui s'affiche selon la recherche (en dur pour le moment)-->
     <div class="row justify-content-center pt-2">
-    <?php
-for($i = 0; $i < count($articles);$i++)
-{
-    if($i == 3&& count($articles) > 3)
-    {
-        echo"</div>";
-        echo"<div class=\"card-group col-11\">";
-    }
-    if($i==0)
-    echo"<div class=\"card-group col-11\">";
-    echo "
+        <?php
+        for ($i = 0; $i < count($articles); $i++) {
+            if ($i == 3 && count($articles) > 3) {
+                echo "</div>";
+                echo "<div class=\"card-group col-11\">";
+            }
+            if ($i == 0)
+                echo "<div class=\"card-group col-11\">";
+            echo "
     <div class=\"card m-2\">
-        <a href=\"page/article.php?idA=".$articles[$i]['id']."\">
+        <a href=\"page/article.php?idA=" . $articles[$i]['id'] . "\">
             <img class=\"card-img-top\" src=\"img/download.svg\" alt=\"#\">
         </a>
         <div class=\"card-body\">
-            <h5 class=\"card-title\">".$articles[$i]['nom']."</h5>
-            <p class=\"card-text\">".$articles[$i]['description']."</p>
+            <h5 class=\"card-title\">" . $articles[$i]['nom'] . "</h5>
+            <p class=\"card-text\">" . $articles[$i]['description'] . "</p>
             <p class=\"card-text\"><small class=\"text-muted\">Last updated X mins ago</small></p>
         </div>
     </div>";
-}
-if(count($articles) > 3)
-echo " </div>";
-?>
-       
+        }
+        if (count($articles) > 3)
+            echo " </div>";
+        ?>
+
     </div>
 </body>
 
 <!-- Pied de page -->
 <?php include_once('php/footer.inc.php'); ?>
+
 </html>
