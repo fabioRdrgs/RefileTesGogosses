@@ -1,32 +1,45 @@
 <?php
 require '../php/crud_article_func.inc.php';
+if(!isset($_SESSION))
+{
+session_start();
+}
 
+if(!isset($_SESSION['loggedIn']))
+$_SESSION['loggedIn'] = false;
+
+// Nom de la page chargée (sans l'extension)
+$script = basename($_SERVER['SCRIPT_NAME'], '.php');
+// Vérifier si elle est dans la liste des droits.
+// Toujours permettre l'accès à index
+if ( $script != 'index'&& $script != 'annonce' && !$_SESSION['loggedIn']) {
+header('location: index.php');
+die("You are not authorized for this page!");
+}
+
+$titreArticle = filter_input(INPUT_POST, "titreArticle", FILTER_SANITIZE_STRING);
+$quantiteArticle = filter_input(INPUT_POST, "quantiteArticle", FILTER_SANITIZE_NUMBER_INT);
+$descriptionArticle = filter_input(INPUT_POST, "descArticle", FILTER_SANITIZE_STRING);
+$prixArticle = filter_input(INPUT_POST,'prixArticle',FILTER_SANITIZE_STRING);
 if(!isset($_GET['idA']))
 {
     die("Veuillez sélectionner un article");
 }
 else
 {
-<<<<<<< Updated upstream
     $infoArticle = ReadArticleById($_GET['idA']);
-
-    var_dump($infoArticle);
-    echo "<img style=\"width:300px;height:300px;\" src=\"../tmp/".$infoArticle['nomImageArticle'].'.'.$infoArticle['typeImageArticle']."\" >";
-}
-?>
-=======
-        $infoArticle = ReadArticleById($_GET['idA']);
-        var_dump($_SESSION);
-
+    var_dump($_SESSION);
+var_dump($_FILES);
     if(isset($_POST['cancelUpdate']))
     {
         unset($_POST['modifyA']);
     }
     else if(isset($_POST['submitUpdate']))
     {
-        var_dump($infoArticle);
+       
             if($titreArticle != $infoArticle[0]['nomArticle'] || $quantiteArticle != $infoArticle[0]['quantiteArticle'] || $prixArticle != $infoArticle[0]['prixArticle'] || $infoArticle[0]['descriptionArticle'] != $descriptionArticle)
             {
+                
                 var_dump($_FILES['imgSelect']);
                 if($_FILES['imgSelect']['error'][0] == 0)
                 {
@@ -136,4 +149,3 @@ else
     }
 
 }
->>>>>>> Stashed changes
