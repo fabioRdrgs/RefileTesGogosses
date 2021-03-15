@@ -14,7 +14,7 @@ $script = basename($_SERVER['SCRIPT_NAME'], '.php');
 // Vérifier si elle est dans la liste des droits.
 // Toujours permettre l'accès à index
 if ( $script != 'index' && $_SESSION['loggedIn']) {
-header('location: index.php');
+header('location: ../index.php');
 die("You are not authorized for this page!");
 }
 
@@ -83,7 +83,7 @@ if(isset($_POST['submit']))
                 <label for="inputEmail" class="mr-5">Verification :</label>
                 <input type="password" name="passwordVerif" id="uPswdVer" class="form-control col-4 ml-2" required autofocus>
             </div>
-            <input type="submit" name="register" class="btn btn-primary col-2" id="register" />
+            <input type="submit" name="submit" class="btn btn-primary col-2" id="register" />
         </form>
     </div>
 </body>
@@ -93,3 +93,4 @@ if(isset($_POST['submit']))
 
 </html>
 <script src="../js/main.js"></script>
+<script src="../js/register.js"></script>
