@@ -1,5 +1,8 @@
 <?php 
+<<<<<<< HEAD
 require_once 'php/login_func.inc.php';
+
+>>>>>>> 4e911112ee0062e9938a8a02cbed89798c1b2d9d
 if(!isset($_SESSION))
 {
 session_start();
@@ -14,7 +17,7 @@ $script = basename($_SERVER['SCRIPT_NAME'], '.php');
 // Vérifier si elle est dans la liste des droits.
 // Toujours permettre l'accès à index
 if ( $script != 'index' && $_SESSION['loggedIn']) {
-header('location: ../index.php');
+header('location: ./index.php');
 die("You are not authorized for this page!");
 }
 
@@ -62,7 +65,11 @@ if(isset($_POST['submit']))
 
 <body>
     <!-- Barre de nvigation -->
+<<<<<<< HEAD
     <?php include_once('php/nav.inc.php'); ?>
+=======
+    <?php include_once('./php/nav.inc.php'); ?>
+>>>>>>> 4e911112ee0062e9938a8a02cbed89798c1b2d9d
 
     <div class="container-fluid">
         <form method="POST" action="signup.php" class="row row-cols-lg-auto g-2 justify-content-center">
@@ -89,8 +96,12 @@ if(isset($_POST['submit']))
 </body>
 
 <!-- Pied de page -->
+<<<<<<< HEAD
 <?php include_once('php/footer.inc.php'); ?>
+=======
+<?php include_once('./php/footer.inc.php'); ?>
+>>>>>>> 4e911112ee0062e9938a8a02cbed89798c1b2d9d
 
 </html>
-<script src="../js/main.js"></script>
-<script src="../js/register.js"></script>
+<script src="./js/main.js"></script>
+<script src="./js/register.js"></script>
