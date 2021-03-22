@@ -5,10 +5,6 @@ if (!isset($_SESSION)) {
 }
 if (!isset($_SESSION['loggedIn']))
     $_SESSION['loggedIn'] = false;
-
-include_once('page_func.inc.php');
-
-$lienNav = setLinks($_SERVER['PHP_SELF']);
 ?>
 
 <!DOCTYPE html>
@@ -22,8 +18,8 @@ $lienNav = setLinks($_SERVER['PHP_SELF']);
 
 <body style="font-family: Arial, Helvetica, sans-serif;">
     <nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #EEEEEF;">
-        <img src="<?= $lienNav[4] ?>" alt="Icone" width="50" height="50">
-        <a class="navbar-brand" href="<?= $lienNav[0] ?>">Refile tes Gogosses</a>
+        <img src="./img/icon.png" alt="Icone" width="50" height="50">
+        <a class="navbar-brand" href="index.php">Refile tes Gogosses</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,14 +27,14 @@ $lienNav = setLinks($_SERVER['PHP_SELF']);
             <div class="navbar-collapse collapse justify-content-center">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= $lienNav[0] ?>">Accueil<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index.php">Accueil<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= $lienNav[1] ?>">Annonces</a>
+                        <a class="nav-link" href="annonces.php">Annonces</a>
                     </li>
                     <?php
                     if ($_SESSION["loggedIn"] == true) {
-                        echo "<li class=\"nav-item\"> <a class=\"nav-link\" href=\"" . $lienNav[2] . "\">Mes annonces</a> </li>";
+                        echo "<li class=\"nav-item\"> <a class=\"nav-link\" href=\"annonce.php\">Mes annonces</a> </li>";
                     }
                     ?>
                 </ul>
@@ -46,15 +42,14 @@ $lienNav = setLinks($_SERVER['PHP_SELF']);
             <ul class="navbar-nav">
                 <?php
                 if ($_SESSION["loggedIn"] != true) {
-                    echo "<li class=\"nav-item\"> <a class=\"nav-link\" href=\"" . $lienNav[3] . "\">Se connecter</a> </li>";
+                    echo "<li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.php\">Se connecter</a> </li>";
                 }
                 ?>
                 <?php
                 if ($_SESSION["loggedIn"] != true) {
-                    echo "<li class=\"nav-item\"> <a class=\"nav-link\" href=\"" . $lienNav[3] . "\"><img src=\"" . $lienNav[5] . "\"></img></a> </li>";
+                    echo "<li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.php\"><img src=\"./img/cart.svg\"></img></a> </li>";
                 }else{
-                    // Rediriger sur la page du panier
-                    echo "<li class=\"nav-item\"> <a class=\"nav-link\" href=\"" . $lienNav[3] . "\"><img src=\"" . $lienNav[5] . "\"></img></a> </li>";
+                    echo "<li class=\"nav-item\"> <a class=\"nav-link\" href=\"panier.php\"><img src=\"./img/cart.svg\"></img></a> </li>";
                 }
                 ?>
             </ul>

@@ -1,9 +1,3 @@
-<?php
-include_once('page_func.inc.php');
-
-$lienNav = setLinks($_SERVER['PHP_SELF']);
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -18,7 +12,7 @@ $lienNav = setLinks($_SERVER['PHP_SELF']);
         <section class="">
             <p class="d-flex justify-content-center align-items-center">
                 <span class="me-3 mr-2">Inscription gratuite</span>
-                <button type="button" onclick="location.href='<?= $lienNav[6] ?>'" class="btn btn-outline-light btn-rounded">
+                <button type="button" onclick="location.href='signup.php'" class="btn btn-outline-light btn-rounded">
                     S'inscrire!
                 </button>
             </p>
@@ -26,7 +20,7 @@ $lienNav = setLinks($_SERVER['PHP_SELF']);
     </div>
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
         © 2020-2021 Copyright:
-        <a class="text-white" href="<?= $lienNav[0] ?>">RefileTesGogossses.ch</a>
+        <a class="text-white" href="index.php">RefileTesGogossses.ch</a>
     </div>
 </footer>
 

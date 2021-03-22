@@ -28,9 +28,9 @@ if (isset($search)) {
 
     <!-- Logo + Phrase d'accroche/catchy -->
     <div class="container-fluid" style="text-align: center;">
-        <img src="<?= $lienNav[4] ?>" alt="Icone" width="50" height="50">
+        <img src="./img/icon.png" alt="Icone" width="50" height="50">
         <br />
-        Phrases d'accroche / catchy
+        Refile tes Gogosses de la meilleure des manières !
     </div>
     <form action="index.php" method="POST">
         <!-- Barre de recherche (recherche simple) -->
@@ -60,7 +60,7 @@ if (isset($search)) {
                 echo "<div class=\"card-group col-11\">";
             echo "
              <div class=\"card m-2\">
-            <a href=\"./annonce.php?idA=" . $articles[$i]['id'] . "\">
+            <a href=\"./article.php?idA=" . $articles[$i]['id'] . "\">
             <img class=\"card-img-top\" src=\"tmp/". $articles[$i]['nomImage'].".". $articles[$i]['typeImage']."\" alt=\"#\">
             </a>
             <div class=\"card-body\">

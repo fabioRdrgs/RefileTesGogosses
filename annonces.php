@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Accueil</title>
+    <title>Annonces</title>
     <style>
         #sidebar {
             width: 25%;
