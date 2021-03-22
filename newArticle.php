@@ -24,6 +24,8 @@ $prixArticle = filter_input(INPUT_POST,'prixArticle',FILTER_SANITIZE_STRING);
 $imgArray = [];
 if (isset($_POST['submit']))
 {
+    if($_FILES["imgSelect"]['error'][0] == 0)
+    {
     var_dump($_FILES["imgSelect"]);
     for ($i = 0; $i < count($_FILES['imgSelect']['name']); $i++) 
     {
@@ -62,7 +64,9 @@ if (isset($_POST['submit']))
             }
         }
     }
-
+    }
+    else
+   echo "Veuillez sélectionner une image pour votre article";
     if(!empty($imgArray))
     {
         $resultArticleCreation = CreateNewArticle($titreArticle,$quantiteArticle,$descriptionArticle,$prixArticle,$imgArray,$_SESSION['user']['id']);   
