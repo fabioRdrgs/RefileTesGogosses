@@ -21,12 +21,15 @@ var_dump($_SESSION);
 $uEmail = filter_input(INPUT_POST,'email',FILTER_VALIDATE_EMAIL);
 $uPswd = filter_input(INPUT_POST,'password',FILTER_SANITIZE_STRING);
 
+
 if(isset($_POST['submit']))
 {
+    //S'assure que l'email entré existe
     if(checkIfEmailExists($uEmail))
     {
+        //Récupère les infos de l'email en question dans la BDD
         $userInfo = getUserInfo($uEmail);
-var_dump($userInfo);
+        //Vérifie le mot de passe fourni avec celui dans la BDD
         if(password_verify($uPswd,$userInfo['mdp']))
         {
             $_SESSION['loggedIn'] = true;
@@ -36,7 +39,8 @@ var_dump($userInfo);
             unset($userInfo);
             unset($uPswd);
             header('location: ./index.php');
-        }else
+        }
+        else
         echo "Mot de Passe invalide!";
         
     }
@@ -44,7 +48,6 @@ var_dump($userInfo);
     echo "Cet email n'existe pas!";
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 

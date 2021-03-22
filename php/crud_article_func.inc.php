@@ -2,7 +2,12 @@
 require './php/sql.inc.php';
 //SQL
 //************************************************************* */
-
+/**
+ * Lis les informations correspondant à l'id article fournit
+ *
+ * @param int $idArticle
+ * @return Array|false Si un article a été trouvé: renvoie l'article sous forme d'un array, sinon renvoie false
+ */
 function ReadArticleById($idArticle)
 {
     static $ps = null;
@@ -29,6 +34,12 @@ function ReadArticleById($idArticle)
   
     return $answer;
 }
+/**
+ * Effectue une recherche d'article par rapport à la recherche fournie
+ *
+ * @param string $search
+ * @return Array|false Renvoie un array si des articles correspondent à la recherche, sinon renvoie false
+ */
 function recherche($search)
 {
   static $ps = null;
@@ -51,6 +62,17 @@ $answer=false;
   }
 return $answer;
 }
+/**
+ * Permet de créer un nouvel article
+ *
+ * @param string $titreArticle
+ * @param int $quantiteArticle
+ * @param string $descriptionArticle
+ * @param int $prixArticle
+ * @param Array $arrayImages
+ * @param int $idUser
+ * @return bool Renvoie true si l'article a bien été crée, sinon renvoie false
+ */
 function CreateNewArticle($titreArticle, $quantiteArticle, $descriptionArticle, $prixArticle, $arrayImages, $idUser)
 {
 
@@ -93,10 +115,20 @@ function CreateNewArticle($titreArticle, $quantiteArticle, $descriptionArticle, 
         return $e;
         }
 }
-
+/**
+ * Permet de mettre à jour un article avec des nouvelles informations
+ *
+ * @param string $titreArticle
+ * @param int $quantiteArticle
+ * @param string $descriptionArticle
+ * @param int $prixArticle
+ * @param Array $arrayImages
+ * @param int $idArticle
+ * @return bool Renvoie true si l'article a bien été mis à jour, sinon renvoie false
+ */
 function UpdateArticle($titreArticle, $quantiteArticle, $descriptionArticle, $prixArticle, $arrayImages,$idArticle)
 {
-    static $psUpdateAnnonce = null;
+  static $psUpdateAnnonce = null;
   static $psAddImageAnnonce = null;
   static $psDeleteImage = null;
     $sql = "UPDATE `t_annonce` SET ";
