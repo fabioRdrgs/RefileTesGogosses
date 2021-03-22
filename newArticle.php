@@ -22,56 +22,61 @@ $quantiteArticle = filter_input(INPUT_POST, "quantiteArticle", FILTER_SANITIZE_N
 $descriptionArticle = filter_input(INPUT_POST, "descArticle", FILTER_SANITIZE_STRING);
 $prixArticle = filter_input(INPUT_POST,'prixArticle',FILTER_SANITIZE_STRING);
 $imgArray = [];
+
 if (isset($_POST['submit']))
 {
-    var_dump($_FILES["imgSelect"]);
-    for ($i = 0; $i < count($_FILES['imgSelect']['name']); $i++) 
+    //S'assure qu'une image est bien fournie 
+    if($_FILES["imgSelect"]['error'][0] == 0)
     {
-        $Orgfilename = $_FILES["imgSelect"]["name"][$i];
-        $filename = uniqid();
-        $ext = explode("/", $_FILES["imgSelect"]["type"][$i])[1];
-        $dir = "./tmp/";
-        $file = $filename.'.'.$ext;
-     
-        var_dump($file);
-
-        if (count($_FILES['imgSelect']['name']) > 4) {
-            echo "<div id=\"errorDiv\" class=\"alert alert-danger\" role=\"alert\">Attention vous avez sélectionné trop de fichiers!</div>";
-            return;
-        } 
-        else 
+        //Va parcourir l'ensemble des images fournies afin de les traiter
+        for ($i = 0; $i < count($_FILES['imgSelect']['name']); $i++) 
         {
-            if (in_array($ext, ["png", "bmp", "jpg", "jpeg", "gif"])) 
-            {
-                if($titreArticle == "" || $quantiteArticle == "" || $descriptionArticle == "" || $prixArticle == "")
-                {
-                echo "<div id=\"errorDiv\" class=\"alert alert-danger\" role=\"alert\">Veuillez remplir tous les champs !</div>";
+            $Orgfilename = $_FILES["imgSelect"]["name"][$i];
+            $filename = uniqid();
+            $ext = explode("/", $_FILES["imgSelect"]["type"][$i])[1];
+            $dir = "./tmp/";
+            $file = $filename.'.'.$ext;
+            //S'asure que le total d'images n'excède pas 4, sinon affiche une erreur
+            if (count($_FILES['imgSelect']['name']) > 4) {
+                echo "<div id=\"errorDiv\" class=\"alert alert-danger\" role=\"alert\">Attention vous avez sélectionné trop de fichiers!</div>";
                 return;
-                }
-                else
-                {
-                   if(array_push($imgArray,[$filename,$ext]) <= 0)
-                    echo "Erreur";
-                    var_dump($imgArray);
-                }               
             } 
             else 
             {
-                echo "<div id=\"errorDiv\" class=\"alert alert-danger\" role=\"alert\">Veuillez sélectionner uniquement des images !</div>";
-                return;
+                //S'assure que le format de l'image est valide
+                if (in_array($ext, ["png", "bmp", "jpg", "jpeg", "gif"])) 
+                {
+                    if($titreArticle == "" || $quantiteArticle == "" || $descriptionArticle == "" || $prixArticle == "")
+                    {
+                    echo "<div id=\"errorDiv\" class=\"alert alert-danger\" role=\"alert\">Veuillez remplir tous les champs !</div>";
+                    return;
+                    }
+                    else
+                    {
+                        //Affiche un message d'erreure si rien n'a été push dans l'array
+                    if(array_push($imgArray,[$filename,$ext]) <= 0)
+                        echo "Erreur ";
+                    }               
+                } 
+                else 
+                {
+                    echo "<div id=\"errorDiv\" class=\"alert alert-danger\" role=\"alert\">Veuillez sélectionner uniquement des images !</div>";
+                    return;
+                }
             }
         }
     }
-
+    else
+   echo "Veuillez sélectionner une image pour votre article";
+   //Ne s'exécute que si des images ont été fournies
     if(!empty($imgArray))
     {
-        $resultArticleCreation = CreateNewArticle($titreArticle,$quantiteArticle,$descriptionArticle,$prixArticle,$imgArray,$_SESSION['user']['id']);   
-        var_dump($resultArticleCreation);
-
-        if($resultArticleCreation != false)
+        //Teste si un novuel article a bel et bien été crée et va procéder à l'upload de l'image sur le serveur 
+        if(CreateNewArticle($titreArticle,$quantiteArticle,$descriptionArticle,$prixArticle,$imgArray,$_SESSION['user']['id']))
         {
             for($i = 0; $i < count($_FILES['imgSelect']['name']);$i++)
             {
+                //Effectue l'upload des images sur le serveur en les déplaçant hors du cache du serveur
                 if(move_uploaded_file($_FILES["imgSelect"]["tmp_name"][$i],$dir.$file))
                 {
                     echo "Upload was successful";
@@ -83,7 +88,6 @@ if (isset($_POST['submit']))
                     unset($imgArray);
                     unset($_POST);
                 }
-
                 else
                 {
                     echo "Erreur lors de l'upload des fichiers";
@@ -97,6 +101,8 @@ if (isset($_POST['submit']))
         } 
         unset($imgArray);               
     }
+    else
+    echo "Aucune image n'a été fournie";
 }
 ?>
 <!DOCTYPE html>
