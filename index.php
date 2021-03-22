@@ -56,7 +56,7 @@ if (isset($search)) {
                 echo "<div class=\"card-group col-11\">";
             echo "
     <div class=\"card m-2\">
-        <a href=\"page/article.php?idA=" . $articles[$i]['id'] . "\">
+        <a href=\"./annonce.php?idA=" . $articles[$i]['id'] . "\">
             <img class=\"card-img-top\" src=\"tmp/". $articles[$i]['nomImage'].".". $articles[$i]['typeImage']."\" alt=\"#\">
         </a>
         <div class=\"card-body\">
