@@ -34,7 +34,7 @@ if (!isset($_SESSION['loggedIn']))
                     </li>
                     <?php
                     if ($_SESSION["loggedIn"] == true) {
-                        echo "<li class=\"nav-item\"> <a class=\"nav-link\" href=\"annonce.php\">Mes annonces</a> </li>";
+                        echo "<li class=\"nav-item\"> <a class=\"nav-link\" href=\"newArticle.php\">Nouvelle annonce</a> </li>";
                     }
                     ?>
                 </ul>
@@ -43,6 +43,8 @@ if (!isset($_SESSION['loggedIn']))
                 <?php
                 if ($_SESSION["loggedIn"] != true) {
                     echo "<li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.php\">Se connecter</a> </li>";
+                }else{
+                    echo "<li class=\"nav-item\"> <a class=\"nav-link\">Se deconnecter</a> </li>";
                 }
                 ?>
                 <?php

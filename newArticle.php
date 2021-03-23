@@ -92,12 +92,14 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <title>Nouvel article</title>
-    <link href="" rel="stylesheet" type="text/css" />
-
-    <!-- Style & Common Css -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <style>
+        #lbl{
+            display: inline-block;
+            width: 35%;
+            font-variant: small-caps;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
@@ -109,25 +111,25 @@ if (isset($_POST['submit'])) {
     <div class="container-fluid">
         <form method="POST" action="newArticle.php" enctype="multipart/form-data" class="pt-3">
             <div class="form-group">
-                <label for="tArt">Titre de votre article</label>
+                <label for="tArt" id="lbl">Titre de votre article</label>
                 <input type="text" name="titreArticle" id="tArt" value="Banane" />
             </div>
             <div class="form-group">
-                <label for="qArt">Quantité</label>
+                <label for="qArt" id="lbl">Quantité</label>
                 <input type="number" name="quantiteArticle" id="qArt" value="50" />
             </div>
             <div class="form-group">
-                <label for="pArt">Prix</label>
+                <label for="pArt" id="lbl">Prix</label>
                 <input type="number" name="prixArticle" id="pArt" value="15.50" />
             </div>
             <div class="form-group">
-                <label for="dArt">Description</label>
+                <label for="dArt" id="lbl">Description</label>
                 <textarea name="descArticle" id="dArt">
             Des Bananes!
             </textarea>
             </div>
             <div class="form-group">
-                <label for="fileSelect"> Sélectionnez 1 à 4 images de l'article :</label>
+                <label for="fileSelect" id="lbl"> Sélectionnez 1 à 4 images de l'article :</label>
                 <input id="fileSelect" accept=".jpg, .jpeg, .png" type="file" name="imgSelect[]" multiple>
             </div>
             <input type="submit" name="submit" id="submit" />
