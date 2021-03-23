@@ -45,36 +45,8 @@ if (isset($search)) {
         </div>
     </form>
 
-    <!-- Liste de quelques articles qui s'affiche selon la recherche (en dur pour le moment)-->
-    <div class="row justify-content-center pt-2">
-        <?php
-        //Affiche les articles en rapport avec la recherche effectuée 
-        for ($i = 0; $i < count($articles); $i++) 
-        {
-            if ($i == 3 && count($articles) > 3) 
-            {
-                echo "</div>";
-                echo "<div class=\"card-group col-11\">";
-            }
-            if ($i == 0)
-                echo "<div class=\"card-group col-11\">";
-            echo "
-             <div class=\"card m-2\">
-            <a href=\"./article.php?idA=" . $articles[$i]['id'] . "\">
-            <img class=\"card-img-top\" src=\"tmp/". $articles[$i]['nomImage'].".". $articles[$i]['typeImage']."\" alt=\"#\">
-            </a>
-            <div class=\"card-body\">
-            <h5 class=\"card-title\">" . $articles[$i]['nom'] . "</h5>
-            <p class=\"card-text\">" . $articles[$i]['description'] . "</p>
-            <p class=\"card-text\"><small class=\"text-muted\">Annonce créée le ".$articles[$i]['dateCreation']."</small></p>
-            </div>
-            </div>";
-        }
-        if (count($articles) > 3)
-            echo " </div>";
-        ?>
-
-    </div>
+    <!-- Affiche les articles après qu'une recherche ait été effectuée -->
+   <?php AfficherArticlesRecherche($articles);?>
 </body>
 
 <!-- Pied de page -->
