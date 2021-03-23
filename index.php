@@ -1,5 +1,4 @@
 <?php
-
 require_once './php/crud_article_func.inc.php';
 $articles = [];
 if (!isset($_SESSION)) {

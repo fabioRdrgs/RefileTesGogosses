@@ -183,7 +183,12 @@ try{
 
 }
 }
-
+/**
+ * Affiche les articles résultant d'une recherche d'article
+ *
+ * @param array<array> $articles array d'articles
+ * @return void
+ */
 function afficherArticlesRecherche($articles)
 {
   echo "<div class=\"row justify-content-center pt-2\">";
@@ -212,7 +217,5 @@ function afficherArticlesRecherche($articles)
         }
         if (count($articles) > 3)
             echo " </div>";
-
-
   echo"</div>";
 }
