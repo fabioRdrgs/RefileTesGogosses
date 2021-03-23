@@ -29,11 +29,16 @@ $uPswdVer = filter_input(INPUT_POST,'passwordVerif',FILTER_SANITIZE_STRING);
 
 if(isset($_POST['submit']))
 {
+    //Teste si le mail entré est conforme aux normes email, si oui, le mail sera stocké dans $matches
     preg_match("/^([\w\d._\-#])+@([\w\d._\-#]+[.][\w\d._\-#]+)+$/",$uEmail,$matches);
+    //S'assure qu'un mail est entré, qu'il est conforme aux normes email, que le mot de passe est plus long que 6 charactères et qu'il est égal au MDP de vérification
     if(strlen($uEmail) > 0 && $matches!= null && strlen($uPswd) > 6 && $uPswd == $uPswdVer){
+       //Teste si l'email existe, si oui, Procède à la création du compte
         if(checkIfEmailExists($uEmail) == null)
         {
+            //Hash le mot de passe
             $hashedPswd = password_hash($uPswd,PASSWORD_DEFAULT);
+            //Si l'utilisateur est bien créé, affecte des informations à la session et se débarasse des informations pour questions de sécurité
             if(CreateNewUser($uName,$uEmail,$hashedPswd))
             {
                 unset($hashedPswd);
@@ -45,9 +50,11 @@ if(isset($_POST['submit']))
                 unset($userInfo);
                 unset($uPswd);
             }
+            //Sinon, affiche une erreur
             else
             echo "erreur lors de la création du compte";          
         }
+        //Sinon, affiche une erreur
         else
         echo "Ce mail existe déjà!";
     }

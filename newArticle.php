@@ -53,8 +53,10 @@ if (isset($_POST['submit'])) {
                 }
             }
         }
-    } else
+    } 
+    else
         $msg = "Veuillez sélectionner une image pour votre article";
+
     //Ne s'exécute que si des images ont été fournies
     if (!empty($imgArray)) {
         //Teste si un novuel article a bel et bien été crée et va procéder à l'upload de l'image sur le serveur 
