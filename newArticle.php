@@ -72,6 +72,7 @@ if (isset($_POST['submit'])) {
                     unset($prixArticle);
                     unset($imgArray);
                     unset($_POST);
+                    header('location: ./index.php');
                 } else {
                     $msg = "<div id=\"errorDiv\" class=\"alert alert-danger\" role=\"alert\">Erreur lors de l'upload des fichiers !</div>";
                 }
