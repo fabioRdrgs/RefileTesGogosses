@@ -1,9 +1,4 @@
 <?php
-/*
-  Date       : ???
-  Auteur     : F. Rodrigues dos Santos
-  Sujet      : ???
- */
 require "./php/constantes.inc.php";
 
 /**
