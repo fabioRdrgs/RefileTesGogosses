@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
                     return;
                 } else {
                     //S'assure que le format de l'image est valide
-                    if (in_array($ext, ["png", "bmp", "jpg", "jpeg", "gif"])) {
+                    if (in_array($ext, ["png", "jpg", "jpeg"])) {
                         if ($titreArticle == "" || $quantiteArticle == "" || $descriptionArticle == "" || $prixArticle == "") {
                             $msg = "<div id=\"errorDiv\" class=\"alert alert-danger\" role=\"alert\">Veuillez remplir tous les champs !</div>";
                             return;
