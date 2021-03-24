@@ -29,13 +29,9 @@ if (!isset($_SESSION['loggedIn']))
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">Accueil<span class="sr-only">(current)</span></a>
                     </li>
-                    <?php
-                    if ($_SESSION["loggedIn"] == true) {
-                        echo "<li class=\"nav-item\"> <a class=\"nav-link\" href=\"annonces.php\">Annonces</a> </li>";
-                    }else{
-                        echo "<li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.php\">Annonces</a> </li>";
-                    }
-                    ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="annonces.php">Annonces</a>
+                    </li>
                     <?php
                     if ($_SESSION["loggedIn"] == true) {
                         echo "<li class=\"nav-item\"> <a class=\"nav-link\" href=\"newArticle.php\">Nouvelle annonce</a> </li>";
@@ -47,14 +43,14 @@ if (!isset($_SESSION['loggedIn']))
                 <?php
                 if ($_SESSION["loggedIn"] != true) {
                     echo "<li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.php\">Se connecter</a> </li>";
-                }else{
+                } else {
                     echo "<li class=\"nav-item\"> <a class=\"nav-link\">Se deconnecter</a> </li>";
                 }
                 ?>
                 <?php
                 if ($_SESSION["loggedIn"] != true) {
                     echo "<li class=\"nav-item\"> <a class=\"nav-link\" href=\"login.php\"><img src=\"./img/cart.svg\"></img></a> </li>";
-                }else{
+                } else {
                     echo "<li class=\"nav-item\"> <a class=\"nav-link\" href=\"panier.php\"><img src=\"./img/cart.svg\"></img></a> </li>";
                 }
                 ?>
