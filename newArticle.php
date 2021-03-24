@@ -112,21 +112,19 @@ if (isset($_POST['submit'])) {
         <form method="POST" action="newArticle.php" enctype="multipart/form-data" class="pt-3">
             <div class="form-group">
                 <label for="tArt" id="lbl">Titre de votre article</label>
-                <input require type="text" name="titreArticle" id="tArt" value="Banane" />
+                <input require type="text" name="titreArticle" id="tArt" value="" />
             </div>
             <div class="form-group">
                 <label for="qArt" id="lbl">Quantité</label>
-                <input require type="number" name="quantiteArticle" id="qArt" value="50" />
+                <input require type="number" name="quantiteArticle" id="qArt" value="" />
             </div>
             <div class="form-group">
                 <label for="pArt" id="lbl">Prix</label>
-                <input require type="number" name="prixArticle" id="pArt" value="15.50" />
+                <input require type="number" name="prixArticle" id="pArt" value="" />
             </div>
             <div class="form-group">
                 <label for="dArt" id="lbl">Description</label>
-                <textarea require name="descArticle" id="dArt">
-            Des Bananes!
-            </textarea>
+                <textarea require name="descArticle" id="dArt"></textarea>
             </div>
             <div class="form-group">
                 <label for="fileSelect" id="lbl"> Sélectionnez 1 à 4 images de l'article :</label>
