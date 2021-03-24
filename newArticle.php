@@ -23,39 +23,42 @@ $prixArticle = filter_input(INPUT_POST, 'prixArticle', FILTER_SANITIZE_STRING);
 $imgArray = [];
 
 if (isset($_POST['submit'])) {
-    //S'assure qu'une image est bien fournie 
-    if ($_FILES["imgSelect"]['error'][0] == 0) {
-        //Va parcourir l'ensemble des images fournies afin de les traiter
-        for ($i = 0; $i < count($_FILES['imgSelect']['name']); $i++) {
-            $Orgfilename = $_FILES["imgSelect"]["name"][$i];
-            $filename = uniqid();
-            $ext = explode("/", $_FILES["imgSelect"]["type"][$i])[1];
-            $dir = "./tmp/";
-            $file = $filename . '.' . $ext;
-            //S'assure que le total d'images n'excède pas 4, sinon affiche une erreur
-            if (count($_FILES['imgSelect']['name']) > 4) {
-                $msg = "<div id=\"errorDiv\" class=\"alert alert-danger\" role=\"alert\">Attention vous avez sélectionné trop de fichiers!</div>";
-                return;
-            } else {
-                //S'assure que le format de l'image est valide
-                if (in_array($ext, ["png", "bmp", "jpg", "jpeg", "gif"])) {
-                    if ($titreArticle == "" || $quantiteArticle == "" || $descriptionArticle == "" || $prixArticle == "") {
-                        $msg = "<div id=\"errorDiv\" class=\"alert alert-danger\" role=\"alert\">Veuillez remplir tous les champs !</div>";
-                        return;
-                    } else {
-                        //Affiche un message d'erreure si rien n'a été push dans l'array
-                        if (array_push($imgArray, [$filename, $ext]) <= 0)
-                            $msg = "Erreur ";
-                    }
-                } else {
-                    $msg = "<div id=\"errorDiv\" class=\"alert alert-danger\" role=\"alert\">Veuillez sélectionner uniquement des images !</div>";
+    if (!isset($titreArticle) && !isset($quantiteArticle) && !isset($descriptionArticle) && !isset($prixArticle)) {
+        //S'assure qu'une image est bien fournie 
+        if ($_FILES["imgSelect"]['error'][0] == 0) {
+            //Va parcourir l'ensemble des images fournies afin de les traiter
+            for ($i = 0; $i < count($_FILES['imgSelect']['name']); $i++) {
+                $Orgfilename = $_FILES["imgSelect"]["name"][$i];
+                $filename = uniqid();
+                $ext = explode("/", $_FILES["imgSelect"]["type"][$i])[1];
+                $dir = "./tmp/";
+                $file = $filename . '.' . $ext;
+                //S'assure que le total d'images n'excède pas 4, sinon affiche une erreur
+                if (count($_FILES['imgSelect']['name']) > 4) {
+                    $msg = "<div id=\"errorDiv\" class=\"alert alert-danger\" role=\"alert\">Attention vous avez sélectionné trop de fichiers!</div>";
                     return;
+                } else {
+                    //S'assure que le format de l'image est valide
+                    if (in_array($ext, ["png", "bmp", "jpg", "jpeg", "gif"])) {
+                        if ($titreArticle == "" || $quantiteArticle == "" || $descriptionArticle == "" || $prixArticle == "") {
+                            $msg = "<div id=\"errorDiv\" class=\"alert alert-danger\" role=\"alert\">Veuillez remplir tous les champs !</div>";
+                            return;
+                        } else {
+                            //Affiche un message d'erreure si rien n'a été push dans l'array
+                            if (array_push($imgArray, [$filename, $ext]) <= 0)
+                                $msg = "Erreur ";
+                        }
+                    } else {
+                        $msg = "<div id=\"errorDiv\" class=\"alert alert-danger\" role=\"alert\">Veuillez sélectionner uniquement des images !</div>";
+                        return;
+                    }
                 }
             }
-        }
-    } 
-    else
-        $msg = "Veuillez sélectionner une image pour votre article";
+        } else
+            $msg = "Veuillez sélectionner une image pour votre article";
+    } else {
+        $msg = "<div id=\"errorDiv\" class=\"alert alert-danger\" role=\"alert\">Veuillez remplir tous les champs !</div>";
+    }
 
     //Ne s'exécute que si des images ont été fournies
     if (!empty($imgArray)) {
@@ -83,7 +86,7 @@ if (isset($_POST['submit'])) {
         }
         unset($imgArray);
     } else
-    $msg = "<div id=\"errorDiv\" class=\"alert alert-danger\" role=\"alert\">Aucune image n'a été fournie !</div>";
+        $msg = "<div id=\"errorDiv\" class=\"alert alert-danger\" role=\"alert\">Aucune image n'a été fournie !</div>";
 }
 ?>
 <!DOCTYPE html>
@@ -93,7 +96,7 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <title>Nouvel article</title>
     <style>
-        #lbl{
+        #lbl {
             display: inline-block;
             width: 35%;
             font-variant: small-caps;
@@ -112,19 +115,19 @@ if (isset($_POST['submit'])) {
         <form method="POST" action="newArticle.php" enctype="multipart/form-data" class="pt-3">
             <div class="form-group">
                 <label for="tArt" id="lbl">Titre de votre article</label>
-                <input type="text" name="titreArticle" id="tArt" value="Banane" />
+                <input required type="text" name="titreArticle" id="tArt" value="Banane" />
             </div>
             <div class="form-group">
                 <label for="qArt" id="lbl">Quantité</label>
-                <input type="number" name="quantiteArticle" id="qArt" value="50" />
+                <input required type="number" name="quantiteArticle" id="qArt" value="50" />
             </div>
             <div class="form-group">
                 <label for="pArt" id="lbl">Prix</label>
-                <input type="number" name="prixArticle" id="pArt" value="15.50" />
+                <input required type="number" name="prixArticle" id="pArt" value="15.50" />
             </div>
             <div class="form-group">
                 <label for="dArt" id="lbl">Description</label>
-                <textarea name="descArticle" id="dArt">
+                <textarea required name="descArticle" id="dArt">
             Des Bananes!
             </textarea>
             </div>
