@@ -42,9 +42,9 @@ if (isset($_POST['submit'])) {
                 $_SESSION['user']['email'] = $uEmail;
                 $_SESSION['user']['id'] = getUserInfo($uEmail)['id'];
                 $_SESSION['loggedIn'] = true;
-                $msg = "<div id=\"errorDiv\" class=\"alert alert-success\" role=\"alert\">Success !</div>";
                 unset($userInfo);
                 unset($uPswd);
+                header("location: index.php");
             }
             //Sinon, affiche une erreur
             else
