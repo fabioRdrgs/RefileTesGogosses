@@ -200,7 +200,7 @@ else {
             </div>
             </br>
             <?= $btn ?>
-            <form method="POST" action="panier.php" />
+            <form method="POST" action="" />
             <input type="submit" id="btn" name="ajouter" value="Ajouter au panier" />
             </form>
         </div>
