@@ -22,8 +22,8 @@ $descriptionArticle = filter_input(INPUT_POST, "descArticle", FILTER_SANITIZE_ST
 $prixArticle = filter_input(INPUT_POST, 'prixArticle', FILTER_SANITIZE_STRING);
 $imgArray = [];
 
-if (isset($_POST['submit'])) {
-    if (!isset($titreArticle) && !isset($quantiteArticle) && !isset($descriptionArticle) && !isset($prixArticle)) {
+if (isset($_POST['submit']))
+{
         //S'assure qu'une image est bien fournie 
         if ($_FILES["imgSelect"]['error'][0] == 0) {
             //Va parcourir l'ensemble des images fournies afin de les traiter
@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
                     return;
                 } else {
                     //S'assure que le format de l'image est valide
-                    if (in_array($ext, ["png", "jpg", "jpeg"])) {
+                    if (in_array($ext, ["png", "bmp", "jpg", "jpeg", "gif"])) {
                         if ($titreArticle == "" || $quantiteArticle == "" || $descriptionArticle == "" || $prixArticle == "") {
                             $msg = "<div id=\"errorDiv\" class=\"alert alert-danger\" role=\"alert\">Veuillez remplir tous les champs !</div>";
                             return;
@@ -56,9 +56,7 @@ if (isset($_POST['submit'])) {
             }
         } else
             $msg = "Veuillez sélectionner une image pour votre article";
-    } else {
-        $msg = "<div id=\"errorDiv\" class=\"alert alert-danger\" role=\"alert\">Veuillez remplir tous les champs !</div>";
-    }
+    
 
     //Ne s'exécute que si des images ont été fournies
     if (!empty($imgArray)) {
