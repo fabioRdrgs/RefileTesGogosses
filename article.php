@@ -128,7 +128,7 @@ else {
             $b .=   "<img style=\"width:300px;height:300px;\" src=\"tmp/" . $img['nomImageArticle'] . '.' . $img['typeImageArticle'] . "\" >";
         }
 
-        $btn = "<input disabled type=\"submit\" name=\"modifyA\" value=\"Modifier l'article\" id=\"submit\"/>";
+        $btn = "<input disabled type=\"submit\" name=\"modifyA\" value=\"Modifier l'article\" id=\"submit\"/> </form>";
     }
 }
 ?>
@@ -165,6 +165,10 @@ else {
             border: grey solid 2px;
         }
 
+        #submit {
+            float: left;
+        }
+
         #btn {
             float: right;
         }
@@ -196,7 +200,9 @@ else {
             </div>
             </br>
             <?= $btn ?>
+            <form method="POST" action="panier.php" />
             <input type="submit" id="btn" name="ajouter" value="Ajouter au panier" />
+            </form>
         </div>
     </div>
 </body>
