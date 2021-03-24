@@ -215,7 +215,7 @@ function afficherArticlesRecherche($articles)
             </div>
             </div>";
         }
-        if (count($articles) > 3)
+        if (count($articles) > 3&& $i== 3)
             echo " </div>";
   echo"</div>";
 }

@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
             $ext = explode("/", $_FILES["imgSelect"]["type"][$i])[1];
             $dir = "./tmp/";
             $file = $filename . '.' . $ext;
-            //S'asure que le total d'images n'excède pas 4, sinon affiche une erreur
+            //S'assure que le total d'images n'excède pas 4, sinon affiche une erreur
             if (count($_FILES['imgSelect']['name']) > 4) {
                 $msg = "<div id=\"errorDiv\" class=\"alert alert-danger\" role=\"alert\">Attention vous avez sélectionné trop de fichiers!</div>";
                 return;
