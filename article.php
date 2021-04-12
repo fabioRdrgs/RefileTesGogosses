@@ -9,14 +9,6 @@ if (!isset($_SESSION)) {
 if (!isset($_SESSION['loggedIn']))
     $_SESSION['loggedIn'] = false;
 
-// Nom de la page chargée (sans l'extension)
-$script = basename($_SERVER['SCRIPT_NAME'], '.php');
-// Vérifier si elle est dans la liste des droits.
-// Toujours permettre l'accès à index
-if ($script != 'index' && $script != 'annonce' && !$_SESSION['loggedIn']) {
-    header('location: index.php');
-    die("You are not authorized for this page!");
-}
 
 $titreArticle = filter_input(INPUT_POST, "titreArticle", FILTER_SANITIZE_STRING);
 $quantiteArticle = filter_input(INPUT_POST, "quantiteArticle", FILTER_SANITIZE_NUMBER_INT);
